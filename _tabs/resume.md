@@ -1,5 +1,4 @@
 ---
-layout: default
 icon: fa-solid fa-user
 order: 4
 ---

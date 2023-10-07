@@ -26,20 +26,20 @@ such as chess or shogi and expanding my knowledge in surprising directions.
 ### Education and diplomas
 <ul>
   <li>
-    <b>Kanji kentei 9 (日本漢字能力検定9級) 満点</b><span style="float: right;">2023</span><br/>
-👨‍🎓<i>autodidact</i>
+    <b>Kanji kentei 9 (日本漢字能力検定9級) 満点</b><span style="float: right;">2023 🗓️</span><br/>
+👨‍🎓autodidact
   </li>
   <li>
-    <b>JLPT 3 (日本語能力試験 N3)</b><span style="float: right;">2023</span><br/>  
-👨‍🎓 <i>autodidact</i>
+    <b>JLPT 3 (日本語能力試験 N3)</b><span style="float: right;">2023 🗓️</span><br/>
+👨‍🎓 autodidact
   </li>
   <li>
-    <b>Kanji kentei 10 (日本漢字能力検定10級) 満点</b><span style="float: right">2022</span><br/>  
-👨‍🎓 <i>autodidact</i>
+    <b>Kanji kentei 10 (日本漢字能力検定10級) 満点</b><span style="float: right">2022 🗓️</span><br/>
+👨‍🎓 autodidact
   </li>
   <li>
-    <b>Master’s degree in Computer Science (Master Informatique)</b><span style="float: right;">2018 → 2021</span><br/> 
-    🏫 <i><a href="https://en.wikipedia.org/wiki/University_of_Lille">University of Lille</a></i>
+    <b>Master’s degree in Computer Science (Master Informatique)</b><span style="float: right;">2018 → 2021 🗓️</span><br/> 
+    🏫 <a href="https://en.wikipedia.org/wiki/University_of_Lille">University of Lille</a>
     <p align="justify">In my Master’s course, I studied algorithm complexity,
     FPGA, OS architecture, software engineering and design, image and pattern
     recognition, decentralized computing, machine learning, 3D modeling and
@@ -48,23 +48,23 @@ such as chess or shogi and expanding my knowledge in surprising directions.
     systems.</p>
   </li>
   <li>
-    <b>Bachelor’s degree in Computer Science (Licence Informatique)</b><span style="float: right;">2017 → 2018</span><br/>
-    🏫 <i><a href="https://en.wikipedia.org/wiki/University_of_Lille">University of Lille</a></i>
+    <b>Bachelor’s degree in Computer Science (Licence Informatique)</b><span style="float: right;">2017 → 2018 🗓️</span><br/>
+    🏫 <a href="https://en.wikipedia.org/wiki/University_of_Lille">University of Lille</a>
     <p align="justify">During this year, I worked on automata, linear
     programming, databases and SQL queries, object-oriented design, system
     programming and networking (OSI Layers).</p>
   </li>
   <li>
-    <b>Technology degree in Computer Science (DUT Informatique)</b><span style="float: right;">2015 → 2017</span><br/>
-    🏫 <i><a href="https://en.wikipedia.org/wiki/University_of_Lille">University of Lille</a></i>
+    <b>Technology degree in Computer Science (DUT Informatique)</b><span style="float: right;">2015 → 2017 🗓️</span><br/>
+    🏫 <a href="https://en.wikipedia.org/wiki/University_of_Lille">University of Lille</a>
     <p align="justify">I learned the basics of Computer Science during these
     two years, includind object-oriented programming, the use and installation
     of GNU/Linux OS, SQL queries, HTML/CSS, JavaScript, character and number
     encoding and other topics.</p>
   </li>
   <li>
-    <b>Industrial technology diploma in sustainable energies (Bac STI2D)</b><span style="float: right;">2012 → 2015</span><br/>
-  🏫 <i><a href="https://lemans-sud.paysdelaloire.e-lyco.fr/">Le Mans Sud Highschool</a></i>
+    <b>Industrial technology diploma in sustainable energies (Bac STI2D)</b><span style="float: right;">2012 → 2015 🗓️</span><br/>
+  🏫 <a href="https://lemans-sud.paysdelaloire.e-lyco.fr/">Le Mans Sud Highschool</a>
   </li>
 </ul>
 
@@ -72,8 +72,8 @@ such as chess or shogi and expanding my knowledge in surprising directions.
 
 <ul>
   <li>
-  <b>Backend developer</b><span style="float: right;">April 2023 → Now</span><br/>
-  <i><a href="https://www.tensorenergy.jp/">Tensor Energy</a>, Fukuoka Prefecture, Japan (remote)</i><br/> 
+  <b>Backend developer</b><span style="float: right;">April 2023 → Now 🗓️</span><br/>
+  <a href="https://www.tensorenergy.jp/">Tensor Energy</a><span style="float: right;">Fukuoka Prefecture, Japan (remote) 📍</span><br/>
   <p align="justify">I work on the infrastructure/back-end part of Tensor
   Energy cloud platform. My role involves deploying and maintaining services
   within our distributed monolithic architecture. Specifically, I have been
@@ -87,8 +87,8 @@ such as chess or shogi and expanding my knowledge in surprising directions.
   </p>
   </li>
   <li>
-  <b>C++ developer intern</b><span style="float: right;">March 2021 → July 2021 (5 months)</span><br/>
-  <i><a href="https://orkad.univ-lille.fr/">CRIStAL laboratories, ORKAD team</a>, Villeneuve d'Ascq, France</i><br/>
+  <b>C++ developer intern</b><span style="float: right;">March 2021 → July 2021 (5 months) 🗓️</span><br/>
+  <a href="https://orkad.univ-lille.fr/">CRIStAL laboratories, ORKAD team</a><span style="float: right;">Villeneuve d'Ascq, France 📍</span><br/>
   <p align="justify">I worked on multi-objective optimization problems (MOPs).
   My goal was to define diversity criteria for these problem solutions and
   benchmark their differences they compared to the literature. My approach was
@@ -98,8 +98,8 @@ such as chess or shogi and expanding my knowledge in surprising directions.
   </p>
   </li>
   <li>
-  <b>C++ developer intern</b><span style="float: right;">October 2020 → February 2021 (5 months)</span><br/>
-  <i><a href="https://www.cristal.univ-lille.fr/SMAC/">CRIStAL laboratories, SMAC team</a>, Villeneuve d'Ascq, France</i><br/>
+  <b>C++ developer intern</b><span style="float: right;">October 2020 → February 2021 (5 months) 🗓️</span><br/>
+  <a href="https://www.cristal.univ-lille.fr/SMAC/">CRIStAL laboratories, SMAC team</a><span style="float: right;">Villeneuve d'Ascq, France 📍</span><br/>
   <p align="justify">I worked on simulating the spread of viruses on a 
   multi-agent system built on a random social network (Barabasi-Albert). The
   goal was to model the spread of Covid in France and make predictions.<br/>
@@ -107,8 +107,8 @@ such as chess or shogi and expanding my knowledge in surprising directions.
   </p>
   </li>
   <li>
-  <b>Python developer</b><span style="float: right;">June 2019 → September 2020 (1 year, 4 months)</span><br/>
-  <i><a href="https://www.cristal.univ-lille.fr/bonsai/">CRIStAL laboratories, BONSAI team</a>, Villeneuve d'Ascq, France</i><br/>
+  <b>Python developer</b><span style="float: right;">June 2019 → September 2020 (1 year, 4 months) 🗓️</span><br/>
+  <a href="https://www.cristal.univ-lille.fr/bonsai/">CRIStAL laboratories, BONSAI team</a><span style="float: right;">Villeneuve d'Ascq, France 📍</span><br/>
   <p align="justify">I have been the main developer of RNA-Tailor, a software
   that, for a given gene of interest with a known genomic sequence, finds all 
   transcripts present in the sample that correspond to this gene and models the
@@ -117,8 +117,8 @@ such as chess or shogi and expanding my knowledge in surprising directions.
   </p>
   </li>
   <li>
-    <b>C++ developer intern</b><span style="float: right;">April 2018 → June 2018 (3 months)</span><br/>
-    <i><a href="https://www.cristal.univ-lille.fr/bonsai/">CRIStAL laboratories, BONSAI team</a>, Villeneuve d'Ascq, France</i><br/>
+    <b>C++ developer intern</b><span style="float: right;">April 2018 → June 2018 (3 months) 🗓️</span><br/>
+    <a href="https://www.cristal.univ-lille.fr/bonsai/">CRIStAL laboratories, BONSAI team</a><span style="float: right;">Villeneuve d'Ascq, France 📍</span><br/>
     <p align="justify">I worked on the Vidjil software, where I optimized time
     and memory consumption for a sequence comparison algorithm. The algorithm
     used the Aho-Corasick automaton that I adapted to the sequences (by
@@ -127,8 +127,8 @@ such as chess or shogi and expanding my knowledge in surprising directions.
     </p>
   </li>
   <li>
-    <b>C/C++ developer intern</b><span style="float: right;">April 2017 → June 2017 (3 months)</span><br/>
-    <i><a href="https://www.oyama-ct.ac.jp/">Oyama Kousen</a>, Tochigi Prefecture, Japan</i><br/>
+    <b>C/C++ developer intern</b><span style="float: right;">April 2017 → June 2017 (3 months) 🗓️</span><br/>
+    <a href="https://www.oyama-ct.ac.jp/">Oyama Kousen</a><span style="float: right;">Tochigi Prefecture, Japan📍</span><br/>
     <p align="justify">I developed image recognition software in C/C++ for the
     Tsukuba Challenge, a robotic contest.<br/>
     <b>Tech Stack:</b> ARGP, C, C++, FANN, OpenCV

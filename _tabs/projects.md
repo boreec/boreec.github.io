@@ -78,6 +78,23 @@ directions (horizontal, vertical and diagonal).</p>
 
 ### Snake
 
+![Game View](https://gitlab.com/boreec/snake/-/raw/master/img/snake.png)
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Snake_(video_game_genre)):
+> Snake is a sub-genre of action video games where the player maneuvers the end
+of a growing line, often themed as a snake. The player must keep the snake from
+colliding with both other obstacles and itself, which gets harder as the snake
+lengthens.
+
+<p align="justify">Probably with Pong, one of the most reproduced games ever.
+This one is probably my very first game written in Rust. The interface is
+really basic, not to say crude. I'm still quite proud of this milestone as a
+software developer.</p>
+
+- **Tech Stack:** Rust, SDL2
+- **Source Code:** [GitHub](https://github.com/boreec/Snake), [GitLab](https://gitlab.com/boreec/snake)
+- **Demo:** [Video](https://www.youtube.com/watch?v=Heaoez-ZWxA)
+
 ### Space Race
 
 ### Tetris

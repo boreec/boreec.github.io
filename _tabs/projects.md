@@ -40,9 +40,10 @@ no further input. One interacts with the Game of Life by creating an initial
 configuration and observing how it evolves. It is Turing complete and can 
 simulate a universal constructor or any other Turing machine. 
 
-This one is probably a classic. I wrote many versions in several languages, but
-for some reason I only managed to find the one I made during my multi-agent
-systems class at University while we were learning NetLogo.
+<p align="justify">This one is probably a classic. I wrote many versions in
+several languages, but for some reason I only managed to find the one I made
+during my multi-agent systems class at university while we were learning
+NetLogo.</p>
 
 - **Tech Stack:** NetLogo
 - **Source Code:** [GitLab](https://gitlab.com/boreec/gol_1)
@@ -50,6 +51,21 @@ systems class at University while we were learning NetLogo.
 ## Games
 
 ### Pong
+
+![Game view](https://raw.githubusercontent.com/boreec/Pong/master/img/game.png)
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Pong):
+> Pong is a table tennis–themed twitch arcade sports video game, featuring
+simple two-dimensional graphics, manufactured by Atari and originally released
+in 1972.
+
+<p align="justify">I made a reproduction of the popular Atari's arcade game.
+This version is simplified as the ball's bounce goes only in 8 possible
+directions (horizontal, vertical and diagonal).</p>
+
+- **Tech Stack:** Rust, SDL2
+- **Source Code:** [GitHub](https://github.com/boreec/Pong), [GitLab](https://gitlab.com/boreec/pong)
+- **Demo:** [Video](https://www.youtube.com/watch?v=FyqXscHFBu0)
 
 ### Snake
 

@@ -12,6 +12,15 @@ them were created a long time ago &#128116;.</p>
 <p align="justify">All projects here are 100% mine, but as long you credit me
 you can reuse the source code for your own purposes.</p>
 
+1. [Cellular Automata](#cellular-automata)
+    1. [Brian's Brain](#brians-brain)
+    2. [Game of Life](#game-of-life)
+2. [Games](#games)
+    1. [Pong](#pong)
+    2. [Snake](#snake)
+    3. [Space Race](#space-race)
+    4. [Tetris](#tetris)
+
 ## Cellular Automata
 
 ### Brian's Brain

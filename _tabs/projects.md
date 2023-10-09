@@ -118,4 +118,20 @@ usually undertake to improve their programming skills.</p>
 - **Demo:** [Video](https://www.youtube.com/watch?v=bzm3udWB7Kc)
 
 ### Tetris
- 
+
+According to Wikipedia:
+> In Tetris, players complete lines by moving differently shaped pieces
+(tetrominoes), which descend onto the playing field. The completed lines
+disappear and grant the player points, and the player can proceed to fill the
+vacated spaces. The game ends when the uncleared lines reach the top of the
+playing field. The longer the player can delay this outcome, the higher their
+score will be. In multiplayer games, players must last longer than their
+opponents
+
+<p align="justify">I had some difficulties at first using Qt logic for
+rendering the game in an OpenGL component within the game loop. This version
+is very basic, but it's working &#128513;.</p>
+
+- **Tech Stack:** C++14, CMake, Qt
+- **Source Code:** [GitHub](https://github.com/boreec/Tetris), [GitLab](https://gitlab.com/boreec/tetris) 
+- **Demo:** [Video](https://www.youtube.com/watch?v=kj1cXrnWwcY)

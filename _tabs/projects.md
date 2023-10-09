@@ -20,6 +20,9 @@ you can reuse the source code for your own purposes.</p>
     2. [Snake](#snake)
     3. [Space Race](#space-race)
     4. [Tetris](#tetris)
+3. [Web Services](#web-services)
+    1. [Rest API](#rest-api)
+    2. [URL Aliaser](#url-aliaser)
 
 ## Cellular Automata
 
@@ -135,3 +138,24 @@ is very basic, but it's working &#128513;.</p>
 - **Tech Stack:** C++14, CMake, Qt
 - **Source Code:** [GitHub](https://github.com/boreec/Tetris), [GitLab](https://gitlab.com/boreec/tetris) 
 - **Demo:** [Video](https://www.youtube.com/watch?v=kj1cXrnWwcY)
+
+## Web services
+
+### Rest API
+
+<p align="justify">I wrote a REST API as an assesmsent for a job interview.
+Since I spent quite some time working on it, I thought about including it here.
+This API provides a few endpoints for dealing with a database of people.</p>
+
+- **Tech Stack:** Flask, Python, SQLite
+- **Source Code:** [GitHub](https://github.com/boreec/REST-API)
+
+### URL Aliaser
+
+<p align="justify">This application serves as a user-friendly URL aliasing
+server. Users can provide long URLs, and the server generates shortened aliases
+that redirect to the original URLs. The aliases act as convenient shortcuts for
+accessing the original links.</p>
+
+- **Tech Stack:** Go
+- **Source Code:** [GitHub](https://github.com/boreec/url-aliaser)

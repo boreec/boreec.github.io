@@ -97,5 +97,25 @@ software developer.</p>
 
 ### Space Race
 
+![Game View](https://gitlab.com/boreec/space-race/-/raw/master/asset/img/game.png)
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/Space_Race_(video_game))
+> Space Race is an arcade game developed by Atari, Inc. and released on July 
+16, 1973. It was the second game by the company, after Pong (1972), which
+marked the beginning of the commercial video game industry. In the game, two
+players each control a rocket ship, with the goal of being the first to move
+their ship from the bottom of the screen to the top. Along the way are
+asteroids, which the players must avoid. Space Race was the first racing arcade
+video game and the first game with a goal of crossing the screen while avoiding
+obstacles. 
+
+<p align="justify">Probably the most advanced game I`ve reproduced with Rust
+and SDL2. I enjoyed doing it as it really differs from the game projects people
+usually undertake to improve their programming skills.</p>
+
+- **Tech Stack:** Rust, SDL2
+- **Source Code:** [GitHub](https://github.com/boreec/Space-Race), [GitLab](https://gitlab.com/boreec/space-race/)
+- **Demo:** [Video](https://www.youtube.com/watch?v=bzm3udWB7Kc)
+
 ### Tetris
  

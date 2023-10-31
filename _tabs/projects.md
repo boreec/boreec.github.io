@@ -20,7 +20,7 @@ you can reuse the source code for your own purposes.</p>
     2. [Snake](#snake)
     3. [Space Race](#space-race)
     4. [Tetris](#tetris)
-4. [Multi-agent Systems]()
+4. [Multi-agent Systems](#multi-agent-systems)
 3. [Web Services](#web-services)
     1. [Rest API](#rest-api)
     2. [URL Aliaser](#url-aliaser)

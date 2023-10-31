@@ -80,10 +80,13 @@ such as chess or shogi and expanding my knowledge in surprising directions.
   focusing on transactional and informational email service, energy forecast
   visualization and accuracy service, internal infrastructure monitoring 
   service, and the main data lake. Additionally, I have contributed to the 
-  establishment of unified tooling and coding standards across repositories.
+  establishment of unified toolingi, naming conventions and coding standards
+  across repositories.
   <br/>
-  <b>Tech Stack:</b> AWS, CDK, Figma, Github Actions, Github Registry, Go, 
-  Grafana, GraphQL, Linear, Python, S3, Sendgrid, SSH, Timestream, Typescript
+  <b>Tech Stack:</b> AWS (CDK, Cognito, EventBridge, Gateway API, Lambda, RDS,
+  Route 53, S3, SQS, Timestream) Figma, Github Actions, Github Registry, Go,
+  Grafana, GraphQL, Linear, Metaflow, Postgresql, Python, Sendgrid, SSH,
+  Typescript
   </p>
   </li>
   <li>

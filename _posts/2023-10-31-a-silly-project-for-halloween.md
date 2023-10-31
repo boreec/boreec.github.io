@@ -6,7 +6,7 @@ tags: [bevy, ecs, halloween, minimp3, mp3, rust]
 ---
 
 {: style="text-align:center"}
-![halloween-1](/assets/img/blog/halloween/2022_02.jpg)
+![halloween-1](/assets/img/blog/halloween/2022-02.jpg)
 *Halloween Night Sky over the French Countryside*
 
 While Halloween never reached the same level of popularity in France as
@@ -15,7 +15,7 @@ past, we would decorate our countryside home with glowing, carved pumpkins,
 creating a truly unique nighttime landscape.
 
 {: style="text-align:center"}
-![halloween-2](/assets/img/blog/halloween/2022_01.jpg)
+![halloween-2](/assets/img/blog/halloween/2022-01.jpg)
 *A typical carved pumpkin we used to make*
 
 Although my childhood and the house I grew up in are now distant memories, the

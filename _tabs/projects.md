@@ -1,6 +1,6 @@
 ---
 icon: fa-solid fa-folder-tree
-order: 1
+order: 2
 ---
 
 <p align="justify">This page is a collection of several projects I made either

@@ -1,6 +1,6 @@
 ---
 icon: fa-solid fa-user
-order: 2
+order: 1
 ---
 ## In a few words
 

@@ -30,8 +30,8 @@ you can reuse the source code for your own purposes.</p>
 ### Brian's Brain
 
 According to [Wikipedia](https://en.wikipedia.org/wiki/Brian's_Brain):
-> Brian's Brain is a cellular automaton devised by Brian Silverman, which is 
-very similar to his Seeds rule. 
+> Brian's Brain is a cellular automaton devised by Brian Silverman, which is
+very similar to his Seeds rule.
 
 <p align="justify">
 I originally made the project because I was interested in learning Vulkan while
@@ -50,8 +50,8 @@ According to [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life):
 by the British mathematician John Horton Conway in 1970. It is a zero-player
 game,meaning that its evolution is determined by its initial state, requiring
 no further input. One interacts with the Game of Life by creating an initial
-configuration and observing how it evolves. It is Turing complete and can 
-simulate a universal constructor or any other Turing machine. 
+configuration and observing how it evolves. It is Turing complete and can
+simulate a universal constructor or any other Turing machine.
 
 <p align="justify">This one is probably a classic. I wrote many versions in
 several languages, but for some reason I only managed to find the one I made
@@ -104,14 +104,14 @@ software developer.</p>
 ![Game View](https://gitlab.com/boreec/space-race/-/raw/master/asset/img/game.png)
 
 According to [Wikipedia](https://en.wikipedia.org/wiki/Space_Race_(video_game))
-> Space Race is an arcade game developed by Atari, Inc. and released on July 
+> Space Race is an arcade game developed by Atari, Inc. and released on July
 16, 1973. It was the second game by the company, after Pong (1972), which
 marked the beginning of the commercial video game industry. In the game, two
 players each control a rocket ship, with the goal of being the first to move
 their ship from the bottom of the screen to the top. Along the way are
 asteroids, which the players must avoid. Space Race was the first racing arcade
 video game and the first game with a goal of crossing the screen while avoiding
-obstacles. 
+obstacles.
 
 <p align="justify">Probably the most advanced game I`ve reproduced with Rust
 and SDL2. I enjoyed doing it as it really differs from the game projects people

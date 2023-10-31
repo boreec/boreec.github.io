@@ -5,14 +5,13 @@ order: 1
 ## In a few words
 
 <p align="justify">I am <strong>Cyprien Borée</strong>, a software engineer in
-his twenties  from France. Since 2022, I have been living in Japan, Aichi 
+his twenties  from France. Since 2022, I have been living in Japan, Aichi
 prefecture with my wife and son. </p>
 
-
 <p align="justify">My interest for computer science covers a wide range of 
-areas, from the tangible, like low-level languages, data structures and 
+areas, from the tangible, like low-level languages, data structures and
 algorithms, to the more abstract, including complexity theory, multi-objective
-optimization, multi-agent systems, bioinformatics, cryptography, game 
+optimization, multi-agent systems, bioinformatics, cryptography, game
 engineering and many others.</p>
 
 <p align=justify>Besides that, I enjoy watching movies, playing board games

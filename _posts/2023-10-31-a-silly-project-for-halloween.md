@@ -19,7 +19,7 @@ creating a truly unique nighttime landscape.
 *A typical carved pumpkin we used to make*
 
 Although my childhood and the house I grew up in are now distant memories, the
-emotions and the ambiance of Halloween continue to resonate in me as the 
+emotions and the ambiance of Halloween continue to resonate in me as the
 holiday comes every year.
 
 ## The project idea
@@ -28,7 +28,7 @@ Recently, I had some interest learning [Bevy](https://bevyengine.org/), a
 trendy game engine written in Rust. Although it is usable not only for games,
 its [ECS (Entities-Components-Systems)](https://en.wikipedia.org/wiki/Entity_component_system)
 makes it really easy to get started with 2D and 3D real-time projects. With Bevy
-in my mind, and Halloween coming by, I wanted to create a small related project 
+in my mind, and Halloween coming by, I wanted to create a small related project
 to learn more about it.
 
 At first, I didn't have a specific plan in mind, but I decided to draw a simple
@@ -37,7 +37,6 @@ As I worked on it, I noticed that I was making a similar mistake to what I had
 done when I reproduced [Atari's Space Race](https://boreec.github.io/projects/#space-race)
 game, where I initially drew everything with basic shapes and then had to
 meticulously organize them in code.
-
 
 {: style="text-align:center"}
 ![Game View](https://gitlab.com/boreec/space-race/-/raw/master/asset/img/game.png)
@@ -50,8 +49,8 @@ Seeing this, I thought, "What if the image scaled with a music's loudness?" The
 idea is simple: as the music gets louder, the image grows larger and as the
 music quiets down, the image shrinks.
 
-
 ## End result
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JpcI-rEiN2M?si=0gdT3bb4fo1EhZ5t&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 The source code is available [here](https://github.com/boreec/halloween_2023).
@@ -69,10 +68,10 @@ a WASM expert. There are probably easy ways to come around these issues, but due
 to time constraints I did not want to bother too much.
 
 - Building the project in WASM and making it running in the current web page was
-part of my initial goal, but I could not compile to that target with minimp3.
+  part of my initial goal, but I could not compile to that target with minimp3.
 - I did not understand how to easily specify dynamic path (for example through a
-CLI option) for resources as Bevy assumes that everything is in the assets
-folder.
+  CLI option) for resources as Bevy assumes that everything is in the assets
+  folder.
 - I am not sure how to make the image scale in a more esthetic way. I thought
-about using a low-pass filter on the music loudness level, but I did not have
-enough time to implement.
+  about using a low-pass filter on the music loudness level, but I did not have
+  enough time to implement.

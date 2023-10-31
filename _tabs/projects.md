@@ -20,6 +20,7 @@ you can reuse the source code for your own purposes.</p>
     2. [Snake](#snake)
     3. [Space Race](#space-race)
     4. [Tetris](#tetris)
+4. [Multi-agent Systems]()
 3. [Web Services](#web-services)
     1. [Rest API](#rest-api)
     2. [URL Aliaser](#url-aliaser)
@@ -138,6 +139,44 @@ is very basic, but it's working &#128513;.</p>
 - **Tech Stack:** C++14, CMake, Qt
 - **Source Code:** [GitHub](https://github.com/boreec/Tetris), [GitLab](https://gitlab.com/boreec/tetris) 
 - **Demo:** [Video](https://www.youtube.com/watch?v=kj1cXrnWwcY)
+
+## Multi-agent systems
+
+### Hunter
+
+![Project image](/assets/img/projects/Hunter.png)
+*UI: Avatars (yellow), Hunters (green), Defender (red), Walls (brown)*
+
+<p align="justify">During my multi-agent systems class at university, we had an
+assignment to create a game similar to Pacman with multi-agent systems. In this
+game, the user controls an Avatar agent within a 2D environment, aiming to win
+by maneuvering it to reach a Winner agent. To achieve this, the Avatar must 
+consume enough Defender agents to make the Winner agent appear. Defenders spawn
+randomly for a limited time and vanish once eaten. While pursuing this goal,
+the Avatar is pursued by Hunter agents that use a Djikstra algorithm for
+pathfinding. If the Hunter agents catch the Avatar, the Avatar loses the game.
+When the Avatar consumes a Defender, it gains temporary abilities to eat
+Hunters, but the Hunters attempt to flee using a Djikstra algorithm with
+reversed values.</p>
+
+- **Tech Stack:**: C++17, qmake, Qt
+- **Source Code:** [GitLab](https://gitlab.com/boreec/hunter)
+
+### SNMAS COVID-19
+
+![Project image](/assets/img/projects/SNMAS.png)
+*Barabasi-Albert graph built for 100 agents*
+
+<p align="justify">This project originates from my master's graduation year.
+The purpose was to build a prediction tool to give an idea of how a disease can
+spread over a population. The environment was built as a social-network graph
+randomly generated (Barabasi-Albert model), and agents used the official people
+characteristics affecting the virus spread (blood type, gender, age,
+comorbidity, etc). Data used for this experiment are the official COVID data
+reported by the French government and related agencies.</p>
+
+- **Tech Stack:** C++17, Make
+- **Source Code:** [GitLab](https://gitlab.com/boreec/sn_mas_em)
 
 ## Web services
 

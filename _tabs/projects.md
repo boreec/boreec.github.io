@@ -7,7 +7,7 @@ order: 2
 at the university or by myself. Most of them do not have other purpose than my
 own enjoyment of perfecting my computer skills, learning new technologies and
 concepts. Code and software quality vary from project to project, as some of
-them were created a long time ago &#128116;.</p>
+them were created in a short time and a long time ago &#128116;.</p>
 
 <p align="justify">All projects here are 100% mine, but as long you credit me
 you can reuse the source code for your own purposes.</p>
@@ -22,8 +22,9 @@ you can reuse the source code for your own purposes.</p>
     4. [Tetris](#tetris)
 4. [Multi-agent Systems](#multi-agent-systems)
 3. [Web Services](#web-services)
-    1. [Rest API](#rest-api)
-    2. [URL Aliaser](#url-aliaser)
+    1. [Github repository downloader](#github-repository-downloader)
+    2. [Rest API](#rest-api)
+    3. [URL Aliaser](#url-aliaser)
 
 ## Cellular Automata
 
@@ -179,6 +180,15 @@ reported by the French government and related agencies.</p>
 - **Source Code:** [GitLab](https://gitlab.com/boreec/sn_mas_em)
 
 ## Web services
+
+### Github Repository Downloader
+
+<p align="justify">This tool can be used for fetching all Github repositories
+of a given user or organization. The CLI provides arguments/flags for fetching
+repositories from multiples users at once.</p>
+
+- **Tech Stack:** Go
+- **Source Code:** [GitHub](https://github.com/boreec/github-repo-downloader)
 
 ### Rest API
 

@@ -83,10 +83,10 @@ such as chess or shogi and expanding my knowledge in surprising directions.
   establishment of unified toolingi, naming conventions and coding standards
   across repositories.
   <br/>
-  <b>Tech Stack:</b> AWS (CDK, Cognito, EventBridge, Gateway API, Lambda, RDS,
-  Route 53, S3, SQS, Timestream) Figma, Github Actions, Github Registry, Go,
-  Grafana, GraphQL, Linear, Metaflow, Postgresql, Python, Sendgrid, SSH,
-  Typescript
+  <b>Tech Stack:</b> AWS (CDK, Cognito, EventBridge, Gateway API, IoT, Lambda,
+  RDS, Route 53, S3, SQS, Timestream), Docker, Figma, Github Actions,
+  Github Registry, Go, Grafana, GraphQL, Linear, Metaflow, Postgresql, Python,
+  Sendgrid, SSH, Typescript
   </p>
   </li>
   <li>

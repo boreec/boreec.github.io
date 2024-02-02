@@ -1,0 +1,19 @@
+baseURL = 'http://boreec.github.io/'
+languageCode = 'en-us'
+title = 'boreec.github.io'
+theme = 'archie'
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/boreec"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/Boree_c"
+
+[[params.social]]
+name = "GitLab"
+icon = "gitlab"
+url = "https://gitlab.com/boreec/"

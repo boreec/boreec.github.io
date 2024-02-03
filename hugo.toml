@@ -17,3 +17,15 @@ url = "https://twitter.com/Boree_c"
 name = "GitLab"
 icon = "gitlab"
 url = "https://gitlab.com/boreec/"
+
+
+[[menu.main]]
+name = "home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "resume"
+url = "/resume"
+weight = 2
+

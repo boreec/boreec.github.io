@@ -6,7 +6,7 @@ tags: [bevy, devlog, ecs, roguelike, rust]
 ---
 
 Welcome to the first *official* devlog post! You can still 
-[read the previous devlog entry](/posts/2023-12-29-devlog-0000) to
+[read the previous devlog entry](/posts/devlog-0000) to
 understand the project and the idea behind. In this entry, I'll mainly share
 some map improvements I've been working on.
 
@@ -52,7 +52,7 @@ fn spawn_player(mut commands: Commands, tileset: Res<TilesetMain>) {
 ---
 
 **Solution**: To fix this, the player's spawning position needs to be given by
-the `Map`. It implies a the map being created before the player. To make sure
+the `Map`. It implies the map being created before the player. To make sure
 things are done in this order, I decided to split the previous
 `GameState::Initializing` state in two:
 

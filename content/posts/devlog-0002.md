@@ -5,21 +5,23 @@ tags: [bevy, devlog, ecs, roguelike, rust]
 draft: true
 ---
 
-If you read the [the previous devlog entry](/posts/devlog-0001), you may have
-noticed that the website appearance changed in the meantime. Previously, the
-website images kept shimmering and as far as I understood it seems to be a
-recurring bug with the Jekyll's theme
-[Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy). There's probably an
-easy fix that I overlooked, but in the end I decided to change to something
-else.
 
-The current website is generated with [hugo](https://gohugo.io/). The migration
-of the blog posts and pages was relatively quick since there was not so much
-content.
+If you've read the [devlog entry](/posts/devlog-0001) that I released in
+January, you might have observed a change in the website's appearance since
+then. Indeed, earlier the site images had a persistent shimmer, which appeared
+to be a recurring issue with Jekyll's
+[Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy). While there might
+be a simple fix that I might have missed, I opted to switch to a complete 
+different theme in the end!
 
-Anyway, enough back and forth, let's dive into this blog entry. This month I've
+The current website is now generated using [hugo](https://gohugo.io/), a really
+fast and lightweight framework for building static website. Migrating the blog 
+posts and pages was a swift process, given the limited amount of content I've
+written so far.
+
+Anyway, enough smalltalk, let's dive into this blog entry. This month I've
 especially been focusing on implementing a way for the character to leave and
-enter maps
+enter maps with a few extra.
 
 1. [Content: A horse sprite](#content-a-horse-sprite)
 2. [Final result](#final-result)

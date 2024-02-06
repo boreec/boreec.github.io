@@ -30,15 +30,15 @@ enter maps with a few extra.
 
 ## Content: Settling on a color palette
 
-Up until now, I have not put too much concern on the game appearance. Considering
-the growing number of sprites, I thought it would be a good idea to decide on a color palette. The idea is to design sprites with a limited number
-of colors that fit well together (think of a painter restricting the shades used).
+So far, I haven't given much thought to the game's appearance. With the
+increasing number of sprites, I decided it was time to establish a color
+palette. The concept is to craft sprites using a limited set of colors that
+harmonize well (similar to a painter restricting their palette).
 
 To find a fitting color palette, I used [lospec.com]("https://lospec.com"),
 which is a website where people post their color palette. I found one named
 [RESURRECT 64](https://lospec.com/palette-list/resurrect-64), by Kerrie Lake.
-I applied this palette4 to the tileset, which make the game looks less flashy
-for sure.
+Applying this palette to the tileset has toned down the game's look for sure.
 
 {{<
     figure 

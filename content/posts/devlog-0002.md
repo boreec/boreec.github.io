@@ -23,9 +23,35 @@ Anyway, enough smalltalk, let's dive into this blog entry. This month I've
 especially been focusing on implementing a way for the character to leave and
 enter maps with a few extra.
 
+1. [Content: Settling on a color palette](#content-settling-on-a-color-palette)
 1. [Content: A horse sprite](#content-a-horse-sprite)
 2. [Final result](#final-result)
 3. [Closing Thoughts](#closing-thoughts)
+
+## Content: Settling on a color palette
+
+Up until now, I have not put too much concern on the game appearance. Considering
+the growing number of sprites, I thought it would be a good idea to decide on a color palette. The idea is to design sprites with a limited number
+of colors that fit well together (think of a painter restricting the shades used).
+
+To find a fitting color palette, I used [lospec.com]("https://lospec.com"),
+which is a website where people post their color palette. I found one named
+[RESURRECT 64](https://lospec.com/palette-list/resurrect-64), by Kerrie Lake.
+I applied this palette4 to the tileset, which make the game looks less flashy
+for sure.
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0014.png"
+    title="before using a color palette"
+>}}
+
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0015.png"
+    title="after using a color palette"
+>}}
 
 ## Content: A horse sprite
 

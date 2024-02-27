@@ -106,6 +106,8 @@ knowledge in surprising directions.
     a robotic contest.
   - **Tech Stack:** ARGP, C, C++, FANN, OpenCV, Ubuntu
 
+---
+
 ### Computer Skill Set
 
 #### AWS
@@ -184,6 +186,8 @@ knowledge in surprising directions.
 - Hugo
 - Jekyll
 - Wordpress
+
+---
 
 ### Other Skill Set
 

@@ -630,7 +630,7 @@ pub fn hide_tile_coordinate_labels(
 
 Moreover, I created a new state called `ExecutionMode`, for switching between
 a `Release` mode (how the game is intended to be seen by the end player), and
-the `Debug` mode (only for the developper). The switch between these mode is
+the `Debug` mode (only for the developer). The switch between these mode is
 as easy as pressing a key:
 
 ```rust

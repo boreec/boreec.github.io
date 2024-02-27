@@ -100,7 +100,7 @@ the screen (see [related commit](https://github.com/boreec/roguelike/tree/603d43
 
 I fixed the rendering by shifting all tiles in relation with the origin. This
 [blog post](https://www.mikechambers.com/blog/2022/10/29/understanding-the-2d-coordinate-system-in-bevy/)
-written by Mike Chambers details how Bevy's coordinates system work. Besided the
+written by Mike Chambers details how Bevy's coordinates system work. Besides the
 map, there's also the character's tile showing up (see [related commit](https://github.com/boreec/roguelike/tree/adbc39c47a4fab1f6fafcbbbfe066a93065355c2)).
 
 {{< figure src="/img/blog/devlog/roguelike-0003.png" 

@@ -58,16 +58,16 @@ knowledge in surprising directions.
   [Tensor Energy](https://www.tensorenergy.jp/), Fukuoka Prefecture,
   Japan (remote)  
   - I work on the infrastructure/back-end part of Tensor Energy cloud platform.
-  My role involves deploying and maintaining services within our distributed
-  monolithic architecture. Specifically, I have been focusing on transactional
-  and informational email service, energy forecast visualization and accuracy
-  service, internal infrastructure monitoring  service, and the main data lake.
+  My role involves deploying and maintaining services within the distributed
+  monolithic architecture. Specifically, I have been focusing on email service,
+  energy forecast visualization and accuracy service, internal infrastructure
+  monitoring  service, the main data lake and several APIs.  
   Additionally, I have contributed to the establishment of unified tooling,
   naming conventions and coding standards across repositories.  
   - **Tech Stack:** AWS (CDK, Cognito, EventBridge, Gateway API, IoT, Lambda,
-  RDS, Route 53, S3, SQS, Timestream), Docker, Figma, Github Actions, Github
-  Registry, Go, Grafana, GraphQL, Linear, Metaflow, Postgresql, Python,
-  Sendgrid, SSH, Typescript
+  RDS, Route 53, S3, SQS, Timestream), Benthos, Docker, Figma, Github Actions,
+  Github Registry, Go, Grafana, GraphQL, Linear, Metaflow, Nats, Postgresql,
+  Python, Sendgrid, SSH, Typescript
 - **C++ developer intern** (March 2021 → July 2021)  
   [CRIStAL laboratories, ORKAD team](https://orkad.univ-lille.fr),
   Villeneuve d'Ascq, France  
@@ -104,20 +104,63 @@ knowledge in surprising directions.
   [Oyama Kousen](https://www.oyama-ct.ac.jp/), Tochigi Prefecture, Japan  
   - I developed image recognition software in C/C++ for the Tsukuba Challenge,
     a robotic contest.
-  - **Tech Stack:** ARGP, C, C++, FANN, OpenCV
+  - **Tech Stack:** ARGP, C, C++, FANN, OpenCV, Ubuntu
 
-### Skills
+### Computer Skill Set
 
-#### Computer
+#### Database
 
-- Database: PostgreSQL, Timestream
-- Editor: Helix, VS Code
-- Operating Systems: GNU/Linux (Debian-based, Gentoo), MacOS
-- Programming languages: C++, Go, Python, Rust
-- Shell: Bash, Zsh
-- Website: CSS, HTML, Jekyll
+- PostgreSQL
+- SQLite
+- Timestream
 
-#### Language
+#### Editor
+
+- Helix
+- VS Code
+
+#### Operating Systems
+
+- GNU/Linux
+  - Arch Linux
+  - Debian-based (Debian, Ubuntu, XUbuntu)
+  - Gentoo
+- FreeBSD
+  - MacOS
+
+#### Programming Languages
+
+- C++
+- Go 
+- Python
+- Rust
+- TypeScript
+
+#### Shell
+
+- Bash
+- Zsh
+
+#### Version Control and CI/CD
+
+- Git
+- GitHub
+  - Actions
+  - Registry
+- GitLab
+- Pre-commit hooks
+
+#### Website
+
+- CSS
+- HTML
+- Hugo
+- Jekyll
+- Wordpress
+
+### Other Skill Set
+
+#### Languages
 
 - English
 - French (native)

@@ -13,8 +13,8 @@ tangible, like low-level languages, data structures and algorithms, to the more
 abstract, including complexity theory, multi-objective optimization, multi-agent
 systems, bioinformatics, cryptography, game engineering and many others.
 
-Besides that, I enjoy watching movies, playing board games such as chess or
-shogi and expanding my knowledge in surprising directions.
+Besides that, I enjoy watching movies, taking long walks and expanding my
+knowledge in surprising directions.
 
 ---
 

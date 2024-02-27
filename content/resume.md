@@ -108,6 +108,22 @@ knowledge in surprising directions.
 
 ### Computer Skill Set
 
+#### AWS
+
+- API Gateway
+- CDK
+- Cognito
+- EC2
+- ECS
+- EKS
+- EventBridge
+- IoT
+- Lambda
+- RDS
+- Route 53
+- S3
+- SQS
+
 #### Database
 
 - PostgreSQL
@@ -118,6 +134,12 @@ knowledge in surprising directions.
 
 - Helix
 - VS Code
+
+#### Message Brokers
+
+- Benthos
+- MQTT
+- NATS
 
 #### Operating Systems
 
@@ -149,6 +171,11 @@ knowledge in surprising directions.
   - Registry
 - GitLab
 - Pre-commit hooks
+
+#### Virtualization and Orchestration
+
+- Docker
+- Kubernetes
 
 #### Website
 

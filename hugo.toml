@@ -14,9 +14,9 @@ icon = "twitter"
 url = "https://twitter.com/Boree_c"
 
 [[params.social]]
-name = "GitLab"
-icon = "gitlab"
-url = "https://gitlab.com/boreec/"
+name = "Linkedin"
+icon = "linkedin"
+url = "https://www.linkedin.com/in/cyprien-boree/"
 
 
 [[menu.main]]

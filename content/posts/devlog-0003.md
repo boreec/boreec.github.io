@@ -5,6 +5,10 @@ tags: [bevy, devlog, ecs, roguelike, rust]
 draft: false
 ---
 
+1. [Migration: Bevy v0.12.1 to v0.13.1](#migration-bevy-v0121-to-v0131)
+2. [Final result](#final-result)
+3. [Closing thoughts](#closing-thoughts)
+
 ## Migration: Bevy v0.12.1 to v0.13.1
 
 As I mentioned in the previous post, Bevy upgraded to v0.13 with a lot of new
@@ -76,7 +80,7 @@ pub fn initialize_tileset_terrain_resource(
 The resources structs now contain the additional image handle as it has been
 decoupled from its layout.
 
-Now for using the tileset resources, the `SpriteSheetBundle` uses the `texture`
+For using the tileset resources, the `SpriteSheetBundle` uses the `texture`
 attribute for the image handle, the `sprite` attribute for the rendering
 properties and the `atlas` attribute for the layout and the tile index:
 
@@ -114,6 +118,8 @@ Here are the resources that I found helpful for the migration:
 
 - https://taintedcoders.com/bevy
 - https://bevyengine.org/learn/migration-guides/0-12-to-0-13/
+
+I compiled all changes in this [pull request](https://github.com/boreec/roguelike/pull/1).
 
 ## Final result
 

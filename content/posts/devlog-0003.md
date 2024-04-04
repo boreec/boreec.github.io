@@ -160,6 +160,7 @@ pub fn generate_random_level_exit_position(&self) -> MapPosition {
 
 Besides the sections above, here are some small changes that also occurred:
 
+- `setup_game` was renamed `setup_main_camera` and moved to `src/camera/mod.rs`
 - `src/map.rs` was moved to its own plugin in `src/map/mod.rs`
 
 ## Final result

@@ -6,8 +6,10 @@ draft: false
 ---
 
 1. [Migration: Bevy v0.12.1 to v0.13.1](#migration-bevy-v0121-to-v0131)
-2. [Final result](#final-result)
-3. [Closing thoughts](#closing-thoughts)
+2. [Mechanics/System: Multiple maps](#mechanicssystem-multiple-maps)
+3. [Miscellaneous](#miscellaneous)
+4. [Final result](#final-result)
+5. [Closing thoughts](#closing-thoughts)
 
 ## Migration: Bevy v0.12.1 to v0.13.1
 

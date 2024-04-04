@@ -154,6 +154,12 @@ pub fn generate_random_level_exit_position(&self) -> MapPosition {
 }
 ```
 
+## Miscellaneous
+
+Besides the sections above, here are some small changes that also occurred:
+
+- `src/map.rs` was moved to its own plugin in `src/map/mod.rs`
+
 ## Final result
 
 Here's a quick video showcasing all new features/mechanics/content/etc.

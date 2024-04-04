@@ -115,12 +115,14 @@ pub fn initialize_rabbits(
     }
 ```
 
-Here are the resources that I found helpful for the migration:
+In the case you are also in need to migrate, I recommend the following
+resources:
 
 - https://taintedcoders.com/bevy
 - https://bevyengine.org/learn/migration-guides/0-12-to-0-13/
 
-I compiled all changes in this [pull request](https://github.com/boreec/roguelike/pull/1).
+I compiled all the migration changes in a single
+[pull request](https://github.com/boreec/roguelike/pull/1).
 
 ## Mechanics/System: Multiple maps
 

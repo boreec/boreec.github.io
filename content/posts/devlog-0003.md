@@ -121,6 +121,39 @@ Here are the resources that I found helpful for the migration:
 
 I compiled all changes in this [pull request](https://github.com/boreec/roguelike/pull/1).
 
+## Mechanics/System: Multiple maps
+
+One aspect of traditional roguelike games is the fact that the player is moving
+across various maps. The exit point often looks like a staircase or an arrow on
+the ground.
+
+As a first step, I created a tile representing the exit which spawns randomly
+on the right side of the map.
+
+```rust
+/// Returns a position for the level exit.
+pub fn generate_random_level_exit_position(&self) -> MapPosition {
+    let spawnable_positions: Vec<_> = self
+        .tiles
+        .iter()
+        .enumerate()
+        .filter(|(index, tile)| {
+            tile.is_walkable() && *index % self.width == self.width - 1
+        })
+        .map(|(index, _)| index)
+        .collect();
+
+    if spawnable_positions.is_empty() {
+        panic!("There are no spawnable positions");
+    }
+
+    let mut rng = rand::thread_rng();
+    let index = *spawnable_positions.choose(&mut rng).unwrap();
+
+    MapPosition::new(self.width - 1, index / self.height)
+}
+```
+
 ## Final result
 
 Here's a quick video showcasing all new features/mechanics/content/etc.

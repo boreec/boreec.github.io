@@ -126,12 +126,11 @@ I compiled all the migration changes in a single
 
 ## Mechanics/System: Multiple maps
 
-One aspect of traditional roguelike games is the fact that the player is moving
-across various maps. The exit point often looks like a staircase or an arrow on
-the ground.
+When playing a traditional roguelike, the character is not limited to one map,
+but can moves across many. Sometimes the exit looks like a staircase,
+sometimes likes an arrow on the ground. My first step to tackle this new
+mechanic was to create a new tile representing the exit.
 
-As a first step, I created a tile representing the exit which spawns randomly
-on the right side of the map.
 
 ```rust
 /// Returns a position for the level exit.

@@ -15,8 +15,7 @@ draft: false
 
 As I mentioned in the previous post, Bevy upgraded to v0.13 with a lot of new
 features (and breaking changes). Since then, the v0.13.1 was released with its
-various fixes and several guides updated their documentation to cover the
-changes.
+various fixes and several guides updated their documentation accordingly.
 
 Hopefully, the code base did not need too much rework, it was mainly:
 

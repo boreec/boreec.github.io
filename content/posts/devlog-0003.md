@@ -131,6 +131,8 @@ but can moves across many. Sometimes the exit looks like a staircase,
 sometimes likes an arrow on the ground. My first step to tackle this new
 mechanic was to create a new tile representing the exit.
 
+This exit is placed on the right side of the map randomly. I added the function
+`generate_randon_level_exit_position` on the `Map` structure doing that:
 
 ```rust
 /// Returns a position for the level exit.

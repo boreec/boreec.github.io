@@ -176,30 +176,23 @@ impl TileType {
 
 ### Generating the exit position
 
-This exit is placed on the right side of the map randomly. I added the function
-`generate_randon_level_exit_position` on the `Map` structure doing that:
+A `Map` may have more than one exit, so I added a vector of `MapPosition` to
+the struct:
 
 ```rust
-/// Returns a position for the level exit.
-pub fn generate_random_level_exit_position(&self) -> MapPosition {
-    let spawnable_positions: Vec<_> = self
-        .tiles
-        .iter()
-        .enumerate()
-        .filter(|(index, tile)| {
-            tile.is_walkable() && *index % self.width == self.width - 1
-        })
-        .map(|(index, _)| index)
-        .collect();
-
-    if spawnable_positions.is_empty() {
-        panic!("There are no spawnable positions");
-    }
-
-    let mut rng = rand::thread_rng();
-    let index = *spawnable_positions.choose(&mut rng).unwrap();
-
-    MapPosition::new(self.width - 1, index / self.height)
+/// Represents the environment where the actors interact together. A map is
+/// made of tiles which has different properties for the actors.
+#[derive(Component)]
+pub struct Map {
+    /// The map's width.
+    pub width: usize,
+    /// The map's height.
+    pub height: usize,
+    /// All tiles for the map, the vector index corresponds to the tile
+    /// coordinates.
+    pub tiles: Vec<TileType>,
+    /// The exits positions for the map.
+    pub exits: Vec<MapPosition>,
 }
 ```
 

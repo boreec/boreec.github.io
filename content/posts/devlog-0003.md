@@ -10,6 +10,7 @@ draft: false
     1. [Adding an exit tile](#adding-an-exit-tile)
     2. [Generating the exit position](#generating-the-exit-position)
     3. [Despawning entities on map exit](#despawning-entities-on-map-exit)
+    4. [Showing the map number](#showing-the-map-number)
 3. [Miscellaneous](#miscellaneous)
 4. [Final result](#final-result)
 5. [Closing thoughts](#closing-thoughts)
@@ -309,6 +310,8 @@ impl From<(PerlinNoise, usize, usize)> for Map {
 ```
 
 ### Despawning entities on map exit
+
+### Showing the map number
 
 ## Miscellaneous
 

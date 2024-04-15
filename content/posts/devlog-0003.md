@@ -196,6 +196,118 @@ pub struct Map {
 }
 ```
 
+For now, the exit position is generated randomly on the right side of the map.
+There's no implementation of path validation yet, so it could happen that no
+path exist between the player and the exit point.
+
+```rust
+impl Map {
+    /// Adds an exit tile on the right side of the map. The position is
+    /// selected randomly.
+    pub fn add_exit_tile(&mut self) {
+        let spawnable_positions: Vec<_> = self
+            .tiles
+            .iter()
+            .enumerate()
+            .filter(|(index, tile)| {
+                tile.is_walkable() && *index % self.width == self.width - 1
+            })
+            .map(|(index, _)| index)
+            .collect();
+
+        if spawnable_positions.is_empty() {
+            panic!("There are no spawnable positions");
+        }
+
+        let mut rng = rand::thread_rng();
+        let index = *spawnable_positions.choose(&mut rng).unwrap();
+
+        self.tiles[index] = TileType::LevelExit;
+
+        let exit_position = MapPosition {
+            x: index % self.width,
+            y: index / self.width,
+        };
+
+        self.exits.push(exit_position);
+    }
+}
+```
+
+The function `add_exit_tile` needs to be added explicitly to the `from` trait
+implementations:
+
+```rust
+impl From<CellularAutomaton> for Map {
+    /// Constructs a `Map` using a cellular automaton.
+    ///
+    /// # Arguments
+    ///
+    /// - `ca`: A `CellularAutomaton` initialized struct.
+    ///
+    /// # Returns
+    ///
+    /// A `Map` where the tiles are determined by the cellular automaton state.    
+    fn from(ca: CellularAutomaton) -> Self {
+        let mut map = Self {
+            width: ca.width,
+            height: ca.height,
+            tiles: ca
+                .cells
+                .iter()
+                .map(|cellular_state| match cellular_state {
+                    CellularState::Alive => TileType::GrassWithStone,
+                    CellularState::Dead => TileType::Grass,
+                })
+                .collect(),
+            exits: vec![],
+        };
+        map.add_exit_tile();
+        map
+    }
+}
+
+impl From<(PerlinNoise, usize, usize)> for Map {
+    /// Constructs a `Map` using Perlin noise.
+    ///
+    /// # Arguments
+    ///
+    /// - `tuple`: A tuple with three parameters representing a `PerlinNoise` struct,
+    ///            the width, and the height of the map.
+    ///
+    /// # Returns
+    ///
+    /// A `Map` where the tiles are determined by Perlin noise.
+    fn from(tuple: (PerlinNoise, usize, usize)) -> Self {
+        let mut cells: Vec<TileType> = Vec::new();
+        for i in 0..tuple.1 {
+            for j in 0..tuple.2 {
+                let x_scaled = i as f64 * PERLIN_NOISE_SCALE;
+                let y_scaled = j as f64 * PERLIN_NOISE_SCALE;
+                let noise_value = tuple.0.perlin_noise(x_scaled, y_scaled);
+                if noise_value > 2.2 {
+                    cells.push(TileType::GrassWithFlower);
+                } else if noise_value > -0.25 {
+                    cells.push(TileType::Grass);
+                } else {
+                    cells.push(TileType::GrassWithStone);
+                }
+            }
+        }
+
+        let mut map = Self {
+            width: tuple.1,
+            height: tuple.2,
+            tiles: cells,
+            exits: vec![],
+        };
+
+        map.add_exit_tile();
+        map
+    }
+}
+```
+
 ### Despawning entities on map exit
 
 ## Miscellaneous

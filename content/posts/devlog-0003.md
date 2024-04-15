@@ -7,6 +7,9 @@ draft: false
 
 1. [Migration: Bevy v0.12.1 to v0.13.1](#migration-bevy-v0121-to-v0131)
 2. [Mechanics/System: Multiple maps](#mechanicssystem-multiple-maps)
+    1. [Adding an exit tile](#adding-an-exit-tile)
+    2. [Generating the exit position](#generating-the-exit-position)
+    3. [Despawning entities on map exit](#despawning-entities-on-map-exit)
 3. [Miscellaneous](#miscellaneous)
 4. [Final result](#final-result)
 5. [Closing thoughts](#closing-thoughts)
@@ -126,10 +129,20 @@ I compiled all the migration changes in a single
 
 ## Mechanics/System: Multiple maps
 
+### Adding an exit tile
+
 In a traditional roguelike, the character is not limited to one map, but moves
 across many. The exit may look like a staircase, a door or simply an arrow on
 the ground. So in order to implement this mechanic, the first step was to 
 create a new tile representing the exit.
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0017.png"
+    title="a sign post with an arrow indicates the map exit"
+>}}
+
+### Generating the exit position
 
 This exit is placed on the right side of the map randomly. I added the function
 `generate_randon_level_exit_position` on the `Map` structure doing that:
@@ -157,6 +170,8 @@ pub fn generate_random_level_exit_position(&self) -> MapPosition {
     MapPosition::new(self.width - 1, index / self.height)
 }
 ```
+
+### Despawning entities on map exit
 
 ## Miscellaneous
 

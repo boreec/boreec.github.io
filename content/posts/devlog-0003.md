@@ -126,10 +126,10 @@ I compiled all the migration changes in a single
 
 ## Mechanics/System: Multiple maps
 
-When playing a traditional roguelike, the character is not limited to one map,
-but can moves across many. Sometimes the exit looks like a staircase,
-sometimes likes an arrow on the ground. My first step to tackle this new
-mechanic was to create a new tile representing the exit.
+In a traditional roguelike, the character is not limited to one map, but moves
+across many. The exit may look like a staircase, a door or simply an arrow on
+the ground. So in order to implement this mechanic, the first step was to 
+create a new tile representing the exit.
 
 This exit is placed on the right side of the map randomly. I added the function
 `generate_randon_level_exit_position` on the `Map` structure doing that:

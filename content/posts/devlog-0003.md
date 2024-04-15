@@ -142,6 +142,38 @@ create a new tile representing the exit.
     title="a sign post with an arrow indicates the map exit"
 >}}
 
+Code-wise, the tile is set as walkable so the player needs to be on the tile
+to trigger the map change:
+
+```rust
+#[derive(Clone, Component)]
+pub enum TileType {
+    Grass,
+    GrassWithFlower,
+    GrassWithStone,
+    LevelExit,
+}
+
+impl TileType {
+    pub const fn to_sprite_idx(tile_type: &Self) -> usize {
+        match tile_type {
+            Self::Grass => TILESET_TERRAIN_IDX_GRASS,
+            Self::GrassWithFlower => TILESET_TERRAIN_IDX_GRASS_WITH_FLOWER,
+            Self::GrassWithStone => TILESET_TERRAIN_IDX_GRASS_WITH_STONE,
+            Self::LevelExit => TILESET_TERRAIN_IDX_SIGNPOST,
+        }
+    }
+
+    pub const fn is_walkable(&self) -> bool {
+        match self {
+            Self::Grass | Self::GrassWithFlower => true,
+            Self::GrassWithStone => false,
+            Self::LevelExit => true,
+        }
+    }
+}
+```
+
 ### Generating the exit position
 
 This exit is placed on the right side of the map randomly. I added the function

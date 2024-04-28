@@ -433,7 +433,9 @@ pub fn cleanup_actors(
 }
 ```
 
-For the initialization, we bundle the `MapNumber` component to the entities:
+For the initialization, we bundle the `MapNumber` component to the entities and
+the value corresponds to the resource `CurrentMapNumber`'s value:
+
 ```rust
 /// Initializes all actors for the current map.
 pub fn initialize_actors(
@@ -536,6 +538,91 @@ fn initialize_map(
 ```
 
 ### Showing the map number
+
+The same logic used for displaying the turn number is used. A marker struct is
+component is created and initialized with the resource value:
+
+```rust
+/// Marker component to represent the ui element to display the current turn
+/// number.
+#[derive(Component)]
+pub struct UiCurrentTurnText;
+
+/// Marker component to represent the ui element to display the current map
+/// number.
+#[derive(Component)]
+pub struct UiCurrentMapText;
+
+/// Creates components for the ui elements.
+pub fn setup_ui(
+    mut commands: Commands,
+    asset_server: Res<AssetServer>,
+    current_turn_number: Res<CurrentTurnNumber>,
+    current_map_number: Res<CurrentMapNumber>,
+) {
+    commands.spawn((
+        UiCurrentTurnText,
+        TextBundle::from_section(
+            format!("Turn {}", current_turn_number.0),
+            TextStyle {
+                font: asset_server.load("fonts/GABOED.ttf"),
+                font_size: UI_TEXT_TURN_SIZE,
+                color: UI_TEXT_TURN_COLOR,
+            },
+        ),
+    ));
+
+    commands.spawn((
+        UiCurrentMapText,
+        TextBundle::from_section(
+            format!("Map {}", current_map_number.0),
+            TextStyle {
+                font: asset_server.load("fonts/GABOED.ttf"),
+                font_size: UI_TEXT_TURN_SIZE,
+                color: UI_TEXT_TURN_COLOR,
+            },
+        )
+        .with_style(Style {
+            position_type: PositionType::Absolute,
+            top: Val::Px(0.0),
+            right: Val::Px(0.0),
+            ..default()
+        }),
+    ));
+}
+```
+
+The text content is updated when a new map is initialized:
+
+```rust
+/// Updates the ui element which represents the current map.
+pub fn update_ui_current_map_text(
+    mut query: Query<&mut Text, With<UiCurrentMapText>>,
+    current_map_number: Res<CurrentMapNumber>,
+) {
+    let mut text = query.single_mut();
+    text.sections[0].value = format!("Map {}", current_map_number.0);
+}
+```
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0018.png"
+    title="the first map is #0"
+>}}
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0019.png"
+    title="just before exiting map #0"
+>}}
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0020.png"
+    title="spawning on map #1"
+>}}
+
 
 ## Miscellaneous
 

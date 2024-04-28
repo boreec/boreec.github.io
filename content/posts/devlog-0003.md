@@ -311,6 +311,230 @@ impl From<(PerlinNoise, usize, usize)> for Map {
 
 ### Despawning entities on map exit
 
+First, we need to detect when the player is on an exit tile:
+
+```rust
+/// Checks if a player is on an exit tile. In that case, the game state is
+/// switched to `GameState::CleanupMap`.
+pub fn check_if_player_exit_map(
+    query_map: Query<&Map>,
+    query_player: Query<&MapPosition, With<Player>>,
+    mut next_game_state: ResMut<NextState<GameState>>,
+) {
+    let map = query_map.single();
+    let player_position = query_player.single();
+    for exit_position in &map.exits {
+        if player_position == exit_position {
+            next_game_state.set(GameState::CleanupMap);
+        }
+    }
+}
+```
+
+Before creating and switching to a new map, we need to clean up resources of
+the map the player is going to exit. It means despawning entities of remaining
+map actors, map tiles and the map itself. I added `GameState::CleanupMap` and
+`GameState::CleanupActors` to that purpose:
+
+```rust
+/// States used exclusively during the game. It involves not only the map and
+/// actors creation, but also the main game turn between the player and the
+/// enemies.
+///
+/// The lifecycle of the game is:
+/// 1. `Uninitialized` -> `InitializingMap`
+/// 2. `InitializingMap` -> `InitializingActors`
+/// 3. `InitializingActors` -> `PlayerTurn`
+/// 4.
+///   1. `PlayerTurn` -> `EnemyTurn`
+///   2. `PlayerTurn` -> `CleanupActors`
+/// 5.
+///   1. `EnemyTurn` -> `PlayerTurn` (back to step 4.1)
+///   2. `CleanupActors` -> `CleanupMap`
+/// 6. `CleanupMap` -> `InitializingMap` (back to step 2)
+#[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash, States)]
+pub enum GameState {
+    /// Corresponds to the default state, before the game is running.
+    #[default]
+    Uninitialized,
+    /// Corresponds to the map creation.
+    InitializingMap,
+    /// Corresponds to the creation of the map's actors.
+    InitializingActors,
+    /// Corresponds to the turn when the player can do a move or an action.
+    PlayerTurn,
+    /// Corresponds to the turn when the enemies can do a move or an action.
+    EnemyTurn,
+    /// Corresponds to the map cleanup (spawned entities removal).
+    CleanupMap,
+    /// Corresponds to the map's actors cleanup (spawned entities removal).
+    CleanupActors,
+}
+```
+
+So far, the actors were never *associated* to a specific map. But since we want
+to cleanup and initialize actors on a specific map we need to make that link.
+I created a new component named `MapNumber`. This component is used in addition
+to a new resource `CurrentMapNumber`:
+
+```rust
+#[derive(Bundle)]
+pub struct MapBundle {
+    map: Map,
+    map_number: MapNumber,
+}
+
+/// Represents a number to identity a map.
+#[derive(Component)]
+pub struct MapNumber(pub usize);
+```
+
+```rust
+/// Represents the current map number. The map number is increased every time
+/// the player exits to another map.
+#[derive(Default, Resource)]
+pub struct CurrentMapNumber(pub usize);
+```
+
+This number for cleaning up and initializing our entities:
+
+```rust
+/// Removes all entities (`Map`, `Tile`, etc) related to the current map.
+pub fn cleanup_map(
+    mut commands: Commands,
+    query: Query<(Entity, &MapNumber), Or<(With<Map>, With<Tile>)>>,
+    mut next_game_state: ResMut<NextState<GameState>>,
+    mut current_map_number: ResMut<CurrentMapNumber>,
+) {
+    for (entity, map_number) in &query {
+        if map_number.0 == current_map_number.0 {
+            commands.entity(entity).despawn();
+        }
+    }
+    next_game_state.set(GameState::InitializingMap);
+    current_map_number.0 += 1;
+}
+```
+
+```rust
+/// Removes actors for the current map.
+pub fn cleanup_actors(
+    mut commands: Commands,
+    query: Query<(Entity, &MapNumber)>,
+    mut next_game_state: ResMut<NextState<GameState>>,
+    current_map_number: Res<CurrentMapNumber>,
+) {
+    for (entity, map_number) in &query {
+        if map_number.0 == current_map_number.0 {
+            commands.entity(entity).despawn();
+        }
+    }
+    next_game_state.set(GameState::CleanupMap);
+}
+```
+
+For the initialization, we bundle the `MapNumber` component to the entities:
+```rust
+/// Initializes all actors for the current map.
+pub fn initialize_actors(
+    mut commands: Commands,
+    query_map: Query<(&Map, &MapNumber)>,
+    mut query_player_map_position: Query<&mut MapPosition, With<Player>>,
+    tileset: Res<TilesetActor>,
+    current_map_number: Res<CurrentMapNumber>,
+    mut next_game_state: ResMut<NextState<GameState>>,
+) {
+    let mut current_map = None;
+    for (map, map_number) in &query_map {
+        if map_number.0 == current_map_number.0 {
+            current_map = Some(map);
+        }
+    }
+
+    let current_map = current_map.unwrap();
+    initialize_rabbits(
+        &mut commands,
+        current_map,
+        &tileset,
+        current_map_number.0,
+    );
+
+    // initialize the player only if there's no player created
+    let player_map_position = query_player_map_position.get_single_mut();
+    if player_map_position.is_err() {
+        initialize_player(
+            &mut commands,
+            current_map,
+            &tileset,
+            current_map_number.0,
+        );
+    } else {
+        // if the player already exists, set a new spawn on the map
+        let new_spawn = current_map.generate_random_spawning_position();
+        *player_map_position.unwrap() = new_spawn;
+    }
+    next_game_state.set(GameState::PlayerTurn);
+}
+```
+
+```rust
+/// Initialize a map by spawning tile entities depending on the map dimensions,
+/// the tile placement algorithm, etc.
+/// Lastly, the map entity is spawned.
+fn initialize_map(
+    mut commands: Commands,
+    mut game_next_state: ResMut<NextState<GameState>>,
+    tileset: Res<TilesetTerrain>,
+    current_map_number: Res<CurrentMapNumber>,
+) {
+    let m = if rand::thread_rng().gen_bool(0.5) {
+        Map::from((PerlinNoise::new(), MAP_WIDTH, MAP_HEIGHT))
+    } else {
+        let mut ca = CellularAutomaton::new(MAP_WIDTH, MAP_HEIGHT, 0.5);
+        for _ in 0..50 {
+            ca.transition();
+        }
+        ca.smooth();
+        Map::from(ca)
+    };
+
+    for (i, tile) in m.tiles.iter().enumerate() {
+        let tile_position = MapPosition {
+            x: i % m.width,
+            y: i / m.width,
+        };
+        let (sprite_x, sprite_y) = calculate_sprite_position(&tile_position);
+        commands.spawn(TileBundle {
+            tile: Tile,
+            r#type: tile.clone(),
+            sprite: SpriteSheetBundle {
+                transform: Transform::from_xyz(
+                    sprite_x,
+                    sprite_y,
+                    Z_INDEX_TILE,
+                ),
+                sprite: Sprite::default(),
+                texture: tileset.1.clone(),
+                atlas: TextureAtlas {
+                    layout: tileset.0.clone(),
+                    index: TileType::to_sprite_idx(tile),
+                },
+                ..Default::default()
+            },
+            map_number: MapNumber(current_map_number.0),
+            map_position: tile_position,
+        });
+    }
+
+    commands.spawn(MapBundle {
+        map: m,
+        map_number: MapNumber(current_map_number.0),
+    });
+
+    game_next_state.set(GameState::InitializingActors);
+}
+```
+
 ### Showing the map number
 
 ## Miscellaneous

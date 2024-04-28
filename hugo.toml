@@ -18,7 +18,6 @@ name = "Linkedin"
 icon = "linkedin"
 url = "https://www.linkedin.com/in/cyprien-boree/"
 
-
 [[menu.main]]
 name = "home"
 url = "/"

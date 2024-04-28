@@ -1,8 +1,8 @@
 ---
-title: "devlog #3 - "
+title: "devlog #3 - Switching between maps"
 categories: [Pet Project]
 tags: [bevy, devlog, ecs, roguelike, rust]
-draft: false
+draft: true
 ---
 
 1. [Migration: Bevy v0.12.1 to v0.13.1](#migration-bevy-v0121-to-v0131)

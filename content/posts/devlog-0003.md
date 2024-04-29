@@ -2,7 +2,7 @@
 title: "devlog #3 - Switching between maps"
 categories: [Pet Project]
 tags: [bevy, devlog, ecs, roguelike, rust]
-draft: true
+date: 2024-04-29
 ---
 
 1. [Migration: Bevy v0.12.1 to v0.13.1](#migration-bevy-v0121-to-v0131)
@@ -14,6 +14,8 @@ draft: true
 3. [Miscellaneous](#miscellaneous)
 4. [Final result](#final-result)
 5. [Closing thoughts](#closing-thoughts)
+
+You can still read the [previous devlog](/posts/devlog-0002) if you missed it.
 
 ## Migration: Bevy v0.12.1 to v0.13.1
 

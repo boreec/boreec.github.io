@@ -632,6 +632,7 @@ Besides the sections above, here are some small changes that also occurred:
 - `src/map.rs` was moved to its own plugin in `src/map/mod.rs`
 - although bevy v0.13.1 was released, there was another fix with v0.13.2 that
   I migrated to, but luckily there was no breaking changes
+- added [typos](https://github.com/crate-ci/typos) hook to the pre-commit
 
 ## Final result
 

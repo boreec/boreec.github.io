@@ -644,5 +644,14 @@ a rabbit or a rabbit spawning on a rock.
 
 ## Closing thoughts
 
+Again, the progress may not look like much, but I'm happy to have the map
+switching mechanic done. It made me reconsider how the actors are associated to
+their respective maps. We could use that for generating several maps at once
+instead of doing it when the player is on an exit tile.
+
 As always, if you have any suggestions/remarks regarding the devlog content, the
-code or anything else, please reach out! Don't hesitate to drop a &#11088; on the [project's page](https://github.com/boreec/roguelike).
+code or anything else, please reach out! Don't hesitate to drop a &#11088; on
+the [project's page](https://github.com/boreec/roguelike).
+
+The project is growing and it's really exciting, thank you everyone.
+

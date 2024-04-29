@@ -637,6 +637,11 @@ Besides the sections above, here are some small changes that also occurred:
 
 Here's a quick video showcasing all new features/mechanics/content/etc.
 
+{{< youtube iOdo2TWWXOk >}}
+
+As you may have noticed, there are a few bugs occurring such as respawning on
+a rabbit or a rabbit spawning on a rock.
+
 ## Closing thoughts
 
 As always, if you have any suggestions/remarks regarding the devlog content, the

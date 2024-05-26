@@ -12,6 +12,7 @@ what will become pathfinding.
 
 1. [Bug Fixing: Actors overlapping](#bug-fixing-actors-overlapping-and-on-non-walkable-tiles)
 2. [Refactor: Actors positions owned by Map](#refactor-actors-positions-owned-by-map)
+3. [Mechanics/System: Actors spawning](#mechanicssystem-actors-spawning)
 3. [Mechanics/System: Actors movement](#mechanicssystem-actors-movement)
     1. [Random movements](#random-movements)
     2. [Straight forward movements](#straight-forward-movements)

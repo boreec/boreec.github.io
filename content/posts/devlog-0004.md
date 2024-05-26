@@ -5,6 +5,11 @@ tags: [bevy, devlog, ecs, roguelike, rust]
 draft: false
 ---
 
+This is already the fifth blog post about this project! It's probably the
+longest I've ever worked on a single one. For this entry, I've dealt with a
+lot of refactoring, addressed code smells, and set up the fundamentals of
+what will become pathfinding.
+
 1. [Bug Fixing: Actors overlapping](#bug-fixing-actors-overlapping)
 2. [Bug Fixing: Actors spawning on non-walkable tiles](#bug-fixing-actors-spawning-on-non-walkable-tiles)
 3. [Refactor: Actors positions owned by Map](#refactor-actors-positions-owned-by-map)

@@ -25,13 +25,21 @@ You can still read the [previous devlog](/posts/devlog-0003) if you missed it.
 
 Last month, the map and actors cleanup were introduced when the player leaves
 to another map. I didn't notice at the time, but the order of operations is
-important as it resulted in a bug where the actors can overlap.
+important as it resulted in a bug where actors are left over the new map and
+possibly overlap with other actors or non-walkable tiles.
 
 {{<
     figure 
     src="/img/blog/devlog/roguelike-0022.png"
     title="the player is overlapping with the rabbit"
 >}}
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0021.png"
+    title="the rabbits spawning on non-walkable tiles"
+>}}
+
 
 The solving involved doing this order of operations:
 
@@ -47,13 +55,8 @@ Instead of:
 3. Cleanup Map
 4. Cleanup Actors
 
-## Bug Fixing: Actors spawning on non-walkable tiles
-
-{{<
-    figure 
-    src="/img/blog/devlog/roguelike-0021.png"
-    title="the player is overlapping with the rabbit"
->}}
+I won't go into code details because I've went through big refactors on how the
+actors are associated with map tiles.
 
 ## Refactor: Actors' positions owned by Map
 

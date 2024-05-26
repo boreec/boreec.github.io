@@ -10,25 +10,42 @@ longest I've ever worked on a single one. For this entry, I've dealt with a
 lot of refactoring, addressed code smells, and set up the fundamentals of
 what will become pathfinding.
 
-1. [Bug Fixing: Actors overlapping](#bug-fixing-actors-overlapping)
-2. [Bug Fixing: Actors spawning on non-walkable tiles](#bug-fixing-actors-spawning-on-non-walkable-tiles)
-3. [Refactor: Actors positions owned by Map](#refactor-actors-positions-owned-by-map)
-4. [Mechanics/System: Actors movement](#mechanicssystem-actors-movement)
+1. [Bug Fixing: Actors overlapping](#bug-fixing-actors-overlapping-and-on-non-walkable-tiles)
+2. [Refactor: Actors positions owned by Map](#refactor-actors-positions-owned-by-map)
+3. [Mechanics/System: Actors movement](#mechanicssystem-actors-movement)
     1. [Random movements](#random-movements)
     2. [Straight forward movements](#straight-forward-movements)
-5. [Miscellaneous](#miscellaneous)
-6. [Final result](#final-result)
-7. [Closing thoughts](#closing-thoughts)
+4. [Miscellaneous](#miscellaneous)
+5. [Final result](#final-result)
+6. [Closing thoughts](#closing-thoughts)
 
 You can still read the [previous devlog](/posts/devlog-0003) if you missed it.
 
-## Bug Fixing: Actors overlapping
+## Bug Fixing: Actors overlapping and on non-walkable tiles
+
+Last month, the map and actors cleanup were introduced when the player leaves
+to another map. I didn't notice at the time, but the order of operations is
+important as it resulted in a bug where the actors can overlap.
 
 {{<
     figure 
     src="/img/blog/devlog/roguelike-0022.png"
     title="the player is overlapping with the rabbit"
 >}}
+
+The solving involved doing this order of operations:
+
+1. Initialize Map
+2. Initialize Actors
+3. Cleanup Actors
+4. Cleanup Map
+
+Instead of:
+
+1. Initialize Map
+2. Initialize Actors
+3. Cleanup Map
+4. Cleanup Actors
 
 ## Bug Fixing: Actors spawning on non-walkable tiles
 

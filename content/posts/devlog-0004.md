@@ -27,6 +27,12 @@ You can still read the [previous devlog](/posts/devlog-0003) if you missed it.
 
 ## Bug Fixing: Actors spawning on non-walkable tiles
 
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0021.png"
+    title="the player is overlapping with the rabbit"
+>}}
+
 ## Refactor: Actors' positions owned by Map
 
 ## Mechanics/System: Actors movement

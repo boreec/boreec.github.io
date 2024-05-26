@@ -225,6 +225,109 @@ pub fn check_player_move_via_keys(
 
 ## Mechanics/System: Actors spawning
 
+Previously, the number of actors spawned for a map was the same no matter the
+map size. With this new function, I can extend how many actors are spawned,
+the kind of actors and so on:
+
+```rust
+pub fn generate_spawn_counts(_map: &Map) -> HashMap<ActorKind, usize> {
+    let mut result = HashMap::new();
+    result.insert(ActorKind::Blob, 3);
+    result.insert(ActorKind::Rabbit, 3);
+    return result;
+}
+```
+
+```rust
+/// Spawn mob entities (enemies, NPC...) on the current map.
+pub fn spawn_mobs_on_current_map(
+    mut commands: Commands,
+    mut q_map: Query<&mut Map, With<OnDisplay>>,
+    mut q_actors: Query<(&mut MapPosition, &Actor), With<OnDisplay>>,
+    tileset: Res<TilesetActor>,
+    mut next_game_state: ResMut<NextState<GameState>>,
+) {
+    let mut map = q_map.single_mut();
+
+    let pos_occupied: Vec<MapPosition> =
+        q_actors.iter().map(|(m_p, _)| *m_p).collect();
+
+    let spawn_counts = generate_spawn_counts(&map);
+    let actor_quantity = spawn_counts.values().fold(0, |acc, &x| acc + x);
+    let pos_actors = map
+        .generate_random_positions(actor_quantity, &pos_occupied)
+        .unwrap();
+
+    let mut spawned_quantity = 0;
+    for (actor_kind, quantity) in spawn_counts.iter() {
+        spawn_creature(
+            *actor_kind,
+            &mut map,
+            &pos_actors[spawned_quantity..spawned_quantity + quantity],
+            &mut commands,
+            &tileset,
+        )
+        .unwrap();
+        spawned_quantity += quantity;
+    }
+
+    // initialize the player only if there's no player created
+    let pos_player = q_actors.iter_mut().filter(|(_, a)| a.is_player()).last();
+
+    // if the player already exists, set a new spawn on the map
+    if let Some(mut pos_player) = pos_player {
+        let pos_new_spawn = map
+            .generate_random_positions(1, &pos_actors)
+            .expect("failed to initialize player spawn")
+            .pop()
+            .unwrap();
+
+        pos_player.0.x = pos_new_spawn.x;
+        pos_player.0.y = pos_new_spawn.y;
+    } else {
+        let pos_player_spawn = map
+            .generate_random_positions(1, &pos_actors)
+            .unwrap()
+            .last()
+            .unwrap()
+            .clone();
+
+        spawn_creature(
+            ActorKind::Player,
+            &mut map,
+            &[pos_player_spawn],
+            &mut commands,
+            &tileset,
+        )
+        .unwrap();
+    }
+    next_game_state.set(GameState::PlayerTurn);
+}
+```
+
+```rust
+/// Spawn creatures at specific map positions.
+pub fn spawn_creature(
+    actor_kind: ActorKind,
+    map: &mut Map,
+    positions: &[MapPosition],
+    commands: &mut Commands,
+    tileset: &TilesetActor,
+) -> Result<(), String> {
+    for position in positions {
+        let tile_pos = map.as_tile_index(position).unwrap();
+        if map.tiles[tile_pos].actor.is_some() {
+            return Err("tile already occupied".into());
+        }
+        let actor = Actor::new(actor_kind);
+        map.tiles[tile_pos].actor = Some(actor);
+        commands
+            .spawn((OnDisplay, ActorBundle::new(actor, *position, tileset)));
+    }
+    Ok(())
+}
+```
+
 ## Mechanics/System: Actors movement
 
 ### Random movements

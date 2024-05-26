@@ -134,6 +134,95 @@ pub fn check_player_directional_input(
 }
 ```
 
+The following code is really different from last month, but now, the tiles are
+managed by the Map, and the actor are managed by the tiles:
+
+```rust
+/// Represents a tile.
+#[derive(Clone, Component, Copy)]
+pub struct Tile {
+    pub kind: TileKind,
+    pub actor: Option<Actor>,
+}
+```
+
+```rust
+/// Represents the environment where the actors interact together. A map is
+/// made of tiles which has different properties for the actors.
+#[derive(Component)]
+pub struct Map {
+    /// The map's width.
+    pub width: usize,
+    /// The map's height.
+    pub height: usize,
+    /// All tiles for the map, the vector index corresponds to the tile
+    /// coordinates.
+    pub tiles: Vec<Tile>,
+    /// The exits positions for the map.
+    pub exits: Vec<MapPosition>,
+}
+```
+
+Additionally, a component `OnDisplay` is used to differentiate between the map
+and actors that are on the screen with the ones that are kept in memory
+(although there's no such thing for now):
+
+```rust
+/// Represents an entity that is on the screen and displayable by the camera.
+#[derive(Component)]
+pub struct OnDisplay;
+```
+
+It makes the queries simpler:
+
+```rust
+pub fn check_player_move_via_keys(
+    mut next_state: ResMut<NextState<GameState>>,
+    mut q_actors: Query<(&mut MapPosition, &Actor), With<OnDisplay>>,
+    mut q_map: Query<&mut Map, With<OnDisplay>>,
+    input: Res<ButtonInput<KeyCode>>,
+) {
+    let mut map = q_map.single_mut();
+
+    let (mut pos_player, _) = q_actors
+        .iter_mut()
+        .filter(|(_, a)| a.is_player())
+        .last()
+        .expect("no player pos found");
+
+    let pos_player_old = pos_player.clone();
+
+    if input.any_just_pressed(KEYS_PLAYER_MOVE_RIGHT)
+        && can_move_right(&pos_player.clone(), &map)
+    {
+        move_right(&mut map, &mut pos_player).unwrap();
+    }
+
+    if input.any_just_pressed(KEYS_PLAYER_MOVE_LEFT)
+        && can_move_left(&pos_player.clone(), &map)
+    {
+        move_left(&mut map, &mut pos_player).unwrap();
+    }
+
+    if input.any_just_pressed(KEYS_PLAYER_MOVE_UP)
+        && can_move_up(&pos_player.clone(), &map)
+    {
+        move_up(&mut map, &mut pos_player).unwrap();
+    }
+
+    if input.any_just_pressed(KEYS_PLAYER_MOVE_DOWN)
+        && can_move_down(&pos_player.clone(), &map)
+    {
+        move_down(&mut map, &mut pos_player).unwrap();
+    }
+
+    if pos_player_old != pos_player.clone() {
+        next_state.set(GameState::EnemyTurn);
+    }
+}
+```
+
+## Mechanics/System: Actors spawning
 
 ## Mechanics/System: Actors movement
 

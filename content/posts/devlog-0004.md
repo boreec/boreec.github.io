@@ -2,7 +2,7 @@
 title: "devlog #4 - NPC random movements"
 categories: [Pet Project]
 tags: [bevy, devlog, ecs, roguelike, rust]
-draft: true
+draft: false
 ---
 
 This is already the fifth blog post about this project! It's probably the
@@ -57,7 +57,7 @@ Instead of:
 4. Cleanup Actors
 
 I won't go into code details because I've went through big refactors on how the
-actors are associated with map tiles (see following section)
+actors are associated with map tiles (see following section).
 
 ## Refactor: Actors' positions owned by Map
 

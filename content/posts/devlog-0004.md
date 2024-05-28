@@ -176,20 +176,36 @@ pub struct OnDisplay;
 
 ```mermaid
 ---
-title: Previous implementation
+title: "old Actors and Map relationship"
 ---
 erDiagram
-    TileBundle ||--|| Tile: "has component"
-    TileBundle ||--|| TileType: "has component"
-    TileBundle ||--|| SpriteSheetBundle: "has component"
-    TileBundle ||--|| MapNumber: "has component"
-    TileBundle ||--|| MapPosition: "has component"
-    MapBundle  ||--|| Map: "has component"
-    MapBundle  ||--|| MapNumber: "has component"
+    TileBundle ||--|| Tile: ""
+    TileBundle ||--|| TileType: ""
+    TileBundle ||--|| MapNumber: ""
+    TileBundle ||--|| MapPosition: ""
+    MapBundle  ||--|| Map: ""
+    MapBundle  ||--|| MapNumber: ""
     Map ||--|{ TileType: "contains"
-    ActorBundle ||--|| Actor: "has component"
-    ActorBundle ||--|| MapNumber: "has component"
-    ActorBundle ||--|| MapPosition: "has component"
+    ActorBundle ||--|| Actor: ""
+    ActorBundle ||--|| MapNumber: ""
+    ActorBundle ||--|| MapPosition: ""
+```
+
+```mermaid
+---
+title: "new Actors and Map relationship"
+---
+erDiagram
+    TileBundle ||--|| Tile: ""
+    TileBundle ||--|| MapPosition: ""
+    Tile ||--|| TileKind: "contains"
+    Tile ||--o| Actor: "contains"
+
+    Map ||--|{ Tile: "contains"
+    ActorBundle ||--|| Actor: ""
+    ActorBundle ||--|| MapPosition: ""
+    Actor ||--|| ActorKind: "contains"
+    Actor ||--|| MapPosition: ""
 ```
 
 It makes the queries simpler:

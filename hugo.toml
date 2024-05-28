@@ -4,7 +4,7 @@ title = 'boreec.github.io'
 theme = 'archie'
 
 [params]
-mode="auto"
+mode="light"
 
 [[params.social]]
 name = "GitHub"

@@ -22,6 +22,8 @@ what will become pathfinding.
 
 You can still read the [previous devlog](/posts/devlog-0003) if you missed it.
 
+---
+
 ## Bug Fixing: Actors overlapping and on non-walkable tiles
 
 Last month, the map and actors cleanup were introduced when the player leaves
@@ -59,11 +61,37 @@ Instead of:
 I won't go into code details because I've went through big refactors on how the
 actors are associated with map tiles (see following section).
 
+---
+
 ## Refactor: Actors' positions owned by Map
 
-Previously, I created a component `MapNumber` for all actors and map components
-in order to link how they are connected. The problem with this approach is that
-it makes queries chunkier and overcomplex. For example:
+In an over-engineered ECS fashion, I previously created a component `MapNumber`
+to represent how actors and maps are linked together. Why I did it that way was
+because I thought it would be easier to implement batch generation for maps (
+i.e. generate `n` maps, for map `0` to `n`, generate `x` mobs).
+
+```mermaid
+---
+title: "old Actors and Map relationship"
+---
+erDiagram
+    TileBundle ||--|| Tile: ""
+    TileBundle ||--|| TileType: ""
+    TileBundle ||--|| MapNumber: ""
+    TileBundle ||--|| MapPosition: ""
+    MapBundle  ||--|| Map: ""
+    MapBundle  ||--|| MapNumber: ""
+    Map ||--|{ TileType: "contains"
+    ActorBundle ||--|| Actor: ""
+    ActorBundle ||--|| MapNumber: ""
+    ActorBundle ||--|| MapPosition: ""
+```
+
+This is a typical case of premature optimization, as batch generation for maps
+is not a thing for now. Making this ownership via a component was a bad idea as
+it impacted all systems by making the queries chunkier and adding additional
+filtering everytime something is done for the current map and actors. For
+example:
 
 ```rust
 /// Checks if the player receives a directional input (i.e. an arrow key or a
@@ -172,23 +200,6 @@ and actors that are on the screen with the ones that are kept in memory
 /// Represents an entity that is on the screen and displayable by the camera.
 #[derive(Component)]
 pub struct OnDisplay;
-```
-
-```mermaid
----
-title: "old Actors and Map relationship"
----
-erDiagram
-    TileBundle ||--|| Tile: ""
-    TileBundle ||--|| TileType: ""
-    TileBundle ||--|| MapNumber: ""
-    TileBundle ||--|| MapPosition: ""
-    MapBundle  ||--|| Map: ""
-    MapBundle  ||--|| MapNumber: ""
-    Map ||--|{ TileType: "contains"
-    ActorBundle ||--|| Actor: ""
-    ActorBundle ||--|| MapNumber: ""
-    ActorBundle ||--|| MapPosition: ""
 ```
 
 ```mermaid

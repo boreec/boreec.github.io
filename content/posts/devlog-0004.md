@@ -174,6 +174,24 @@ and actors that are on the screen with the ones that are kept in memory
 pub struct OnDisplay;
 ```
 
+```mermaid
+---
+title: Previous implementation
+---
+erDiagram
+    TileBundle ||--|| Tile: "has component"
+    TileBundle ||--|| TileType: "has component"
+    TileBundle ||--|| SpriteSheetBundle: "has component"
+    TileBundle ||--|| MapNumber: "has component"
+    TileBundle ||--|| MapPosition: "has component"
+    MapBundle  ||--|| Map: "has component"
+    MapBundle  ||--|| MapNumber: "has component"
+    Map ||--|{ TileType: "contains"
+    ActorBundle ||--|| Actor: "has component"
+    ActorBundle ||--|| MapNumber: "has component"
+    ActorBundle ||--|| MapPosition: "has component"
+```
+
 It makes the queries simpler:
 
 ```rust

@@ -1,7 +1,10 @@
-baseURL = 'http://boreec.github.io/'
+baseURL = 'https://boreec.github.io/'
 languageCode = 'en-us'
 title = 'boreec.github.io'
 theme = 'archie'
+
+[params]
+mode="auto"
 
 [[params.social]]
 name = "GitHub"
@@ -27,4 +30,3 @@ weight = 1
 name = "resume"
 url = "/resume"
 weight = 2
-

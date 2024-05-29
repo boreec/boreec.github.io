@@ -169,7 +169,7 @@ pub fn check_player_directional_input(
 ```
 
 The following code is really different from last month, but now, the tiles are
-managed by the Map, and the actor are managed by the tiles:
+managed by the Map, and actors are managed by the tiles:
 
 ```rust
 /// Represents a tile.
@@ -273,11 +273,14 @@ pub fn check_player_move_via_keys(
 }
 ```
 
+---
+
 ## Mechanics/System: Actors spawning
 
-Previously, the number of actors spawned for a map was the same no matter the
-map size. With this new function, I can extend how many actors are spawned,
-the kind of actors and so on:
+Previously, the number of actors spawned for a map was hardcoded to be the same
+for all maps, regardless of their size or *topography*. To address this issue,
+I added `generate_spawn_counts`, that provides the number of mobs to spawn for
+a specific map given as a parameter:
 
 ```rust
 pub fn generate_spawn_counts(_map: &Map) -> HashMap<ActorKind, usize> {
@@ -288,8 +291,102 @@ pub fn generate_spawn_counts(_map: &Map) -> HashMap<ActorKind, usize> {
 }
 ```
 
+Well, the mob quantities are still hardcoded, but at least we can easily adapt
+it in the future. Compare by yourself the old and new implementation of mob
+spawning:
+
 ```rust
-/// Spawn mob entities (enemies, NPC...) on the current map.
+/// old implementation
+pub fn spawn_mobs_on_current_map(
+    mut commands: Commands,
+    query_map: Query<(&Map, &MapNumber)>,
+    mut query_player_map_position: Query<&mut MapPosition, With<Player>>,
+    tileset: Res<TilesetActor>,
+    current_map_number: Res<CurrentMapNumber>,
+    mut next_game_state: ResMut<NextState<GameState>>,
+) {
+    let mut current_map = None;
+    for (map, map_number) in &query_map {
+        if map_number.0 == current_map_number.0 {
+            current_map = Some(map);
+            break;
+        }
+    }
+
+    if current_map.is_none() {
+        panic!("no current map found with number {}", current_map_number.0);
+    }
+
+    let current_map = current_map.unwrap();
+
+    const RABBITS_QUANTITY: usize = 3;
+    const BLOB_QUANTITY: usize = 3;
+    const ACTOR_QUANTIY: usize = RABBITS_QUANTITY + BLOB_QUANTITY;
+
+    let mut actor_positions = Vec::with_capacity(ACTOR_QUANTIY);
+    for _ in 0..ACTOR_QUANTIY {
+        let spawn_position =
+            current_map.generate_random_spawning_position(&actor_positions);
+        match spawn_position {
+            Ok(position) => {
+                actor_positions.push(position);
+            }
+            Err(_) => {
+                break;
+            }
+        }
+    }
+
+    spawn_creature::<RabbitBundle>(
+        &actor_positions[0..RABBITS_QUANTITY],
+        &mut commands,
+        current_map_number.0,
+        &tileset,
+    );
+
+    spawn_creature::<BlobBundle>(
+        &actor_positions[RABBITS_QUANTITY..],
+        &mut commands,
+        current_map_number.0,
+        &tileset,
+    );
+
+    // initialize the player only if there's no player created
+    let player_map_position = query_player_map_position.get_single_mut();
+    if player_map_position.is_err() {
+        let player_spawn_position = match current_map
+            .generate_random_spawning_position(&actor_positions)
+        {
+            Ok(position) => position,
+            Err(_) => {
+                panic!("player could not spawn");
+            }
+        };
+
+        spawn_creature::<PlayerBundle>(
+            &[player_spawn_position],
+            &mut commands,
+            current_map_number.0,
+            &tileset,
+        );
+    } else {
+        // if the player already exists, set a new spawn on the map
+        let new_spawn =
+            current_map.generate_random_spawning_position(&actor_positions);
+
+        *player_map_position.unwrap() = match new_spawn {
+            Ok(position) => position,
+            Err(_) => {
+                panic!("failed to initialize player for the first time");
+            }
+        };
+    }
+    next_game_state.set(GameState::PlayerTurn);
+}
+```
+
+```rust
+/// new implementation
 pub fn spawn_mobs_on_current_map(
     mut commands: Commands,
     mut q_map: Query<&mut Map, With<OnDisplay>>,
@@ -354,6 +451,9 @@ pub fn spawn_mobs_on_current_map(
     next_game_state.set(GameState::PlayerTurn);
 }
 ```
+I think that another refactor to come is to handle the player respawn in a
+dedicated system, but for now that will be enough refactoring. The function
+`spawn_creature` spawns actor entities of a given kind to given positions:
 
 ```rust
 /// Spawn creatures at specific map positions.
@@ -377,6 +477,8 @@ pub fn spawn_creature(
     Ok(())
 }
 ```
+
+---
 
 ## Mechanics/System: Actors movement
 

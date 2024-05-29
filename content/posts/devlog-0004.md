@@ -482,6 +482,27 @@ pub fn spawn_creature(
 
 ## Mechanics/System: Actors movement
 
+As a remainder, the game follows these states:
+
+```mermaid
+---
+title: Game States
+---
+stateDiagram-v2
+    Uninitialized --> InitializingMap
+    InitializingMap --> InitializingActors
+    InitializingActors --> PlayerTurn
+    PlayerTurn --> EnemyTurn
+    EnemyTurn --> PlayerTurn
+    PlayerTurn --> CleanupActors
+    CleanupActors --> CleanupMap
+    CleanupMap --> InitializingMap
+```
+
+`EnemyTurn` and `PlayerTurn` are respectively the states when the enemies and
+the player can move. The player movements are already taken with the keyboard,
+but for the enemies it was yet to be defined.
+
 ### Random movements
 
 ### Straight forward movements

@@ -2,7 +2,7 @@
 title: "devlog #4 - NPC random movements"
 categories: [Pet Project]
 tags: [bevy, devlog, ecs, roguelike, rust]
-draft: false
+date: 2024-05-31
 ---
 
 This is already the fifth blog post about this project! It's probably the
@@ -628,9 +628,25 @@ or non-walkable tiles in his way.
 
 ## Miscellaneous
 
+Besides that, here are a few other changes:
+
+- Player can skip his turn by pressing the Spacebar
+- Changed the background color to black
+- Moved `tile.rs`, `cellular_automaton.rs` and `noise.rs` to Map plugin
+- A lot of small refactoring
+
 ## Final result
 
+Here's a quick video showcasing all new features/mechanics/content/etc. First
+time with the microphone, I hope the quality isn't too bad.
+
+{{< youtube vzD1GXqki6A >}}
+
 ## Closing thoughts
+
+I didn't expect to spend so much time refactoring, but I think I managed to
+have a good foundation for what's coming next. I am not sure for when the next
+devlog will be released as I've been thinking about doing other stuff.
 
 As always, if you have any suggestions/remarks regarding the devlog content, the
 code or anything else, please reach out! Don't hesitate to drop a &#11088; on

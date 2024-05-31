@@ -2,7 +2,7 @@
 title: "devlog #4 - NPC random movements"
 categories: [Pet Project]
 tags: [bevy, devlog, ecs, roguelike, rust]
-draft: true
+date: 2024-05-31
 ---
 
 This is already the fifth blog post about this project! It's probably the

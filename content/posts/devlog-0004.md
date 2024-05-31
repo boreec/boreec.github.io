@@ -2,7 +2,7 @@
 title: "devlog #4 - NPC random movements"
 categories: [Pet Project]
 tags: [bevy, devlog, ecs, roguelike, rust]
-draft: true
+draft: false
 ---
 
 This is already the fifth blog post about this project! It's probably the
@@ -503,9 +503,128 @@ stateDiagram-v2
 the player can move. The player movements are already taken with the keyboard,
 but for the enemies it was yet to be defined.
 
+The first mob introduced was the rabbit, but it doesn't really make sense to
+have rabbits as enemies, [does it](https://www.youtube.com/watch?v=-nk6Gs6Z_Bo) ?
+Instead, I added another (ugly) sprite for the first game enemy.
+
+{{<
+    figure 
+    src="/img/blog/devlog/roguelike-0024.png"
+    title="first enemy: the blob"
+>}}
+
+We have one enemy considered as neutral (the rabbit) and one as hostile (the
+blob). This distinction is used code-wise to choose what movement the mob will
+have:
+
+```rust
+#[derive(Clone, Component, Copy)]
+pub struct Actor {
+    pub kind: ActorKind,
+    pub hostility: ActorHostility,
+}
+
+#[derive(Clone, Copy, Eq, Hash, PartialEq)]
+pub enum ActorKind {
+    Blob,
+    Rabbit,
+    Player,
+}
+
+#[derive(Clone, Copy, Eq, PartialEq)]
+pub enum ActorHostility {
+    Enemy,
+    Neutral,
+}
+```
+
+```rust
+// Moves mobs in the map depending on their `ActorHostility` type.
+pub fn move_mob(
+    mut q_actors: Query<(&mut MapPosition, &Actor), With<OnDisplay>>,
+    mut q_map: Query<&mut Map, With<OnDisplay>>,
+) {
+    let mut map = q_map.single_mut();
+
+    let pos_player = q_actors
+        .iter()
+        .filter(|(_, a)| a.is_player())
+        .last()
+        .expect("no player found")
+        .0
+        .clone();
+
+    for (mut mob, actor) in q_actors.iter_mut() {
+        if actor.is_player() {
+            continue;
+        }
+
+        if actor.is_neutral() {
+            move_randomly(&mut mob, &mut map);
+        } else if actor.is_hostile() {
+            move_to_player(&pos_player, &mut mob, &mut map);
+        }
+    }
+}
+```
+
 ### Random movements
 
+As often, one of the first thing to do is the random version, and so is the
+case with mob movements. To be able to move to a random position, we first need
+to know what are the reachable positions for the mob, and then pick one:
+
+```rust
+/// Move mob actors to a random reachable position.
+pub fn move_randomly(mut pos_mob: &mut MapPosition, map: &mut Map) {
+    let pos_reachable = enumerate_reachable_positions(&pos_mob.clone(), &map);
+
+    if !pos_reachable.is_empty() {
+        let pos_random =
+            pos_reachable[rand::thread_rng().gen_range(0..pos_reachable.len())];
+        map.move_actor(&mut pos_mob, &pos_random).unwrap();
+    }
+}
+```
+
 ### Straight forward movements
+
+This movement is a very basic introduction to what will be the pathfinding
+system. It's a naive way to make a mob moves toward the player when they're
+both on the same vertical or horizontal coordinates:
+
+```rust
+/// Moves a mob towards the player in a straight line.
+pub fn move_to_player(
+    player: &MapPosition,
+    mut mob: &mut MapPosition,
+    mut map: &mut Map,
+) {
+    if mob.y == player.y && mob.x < player.x {
+        if can_move_right(&mob, &mut map) {
+            move_right(&mut map, &mut mob).unwrap();
+        }
+    }
+    if mob.y == player.y && mob.x > player.x {
+        if can_move_left(&mob, &mut map) {
+            move_left(&mut map, &mut mob).unwrap();
+        }
+    }
+    if mob.x == player.x && mob.y > player.y {
+        if can_move_up(&mob, &mut map) {
+            move_up(&mut map, &mut mob).unwrap();
+        }
+    }
+    if mob.x == player.x && mob.y < player.y {
+        if can_move_down(&mob, &mut map) {
+            move_down(&mut map, &mut mob).unwrap();
+        }
+    }
+}
+```
+
+Note that for now, the mob does not take into account if there are other actors
+or non-walkable tiles in his way.
 
 ## Miscellaneous
 
